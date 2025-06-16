@@ -1,238 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BloodBridge - Lifesaving Resources</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BloodBridge - Lifesaving Resources</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
 
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f0f4f8;
-      color: #2c3e50;
-    }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+        }
 
-    header {
-      background: linear-gradient(to right, #20c997, #17a2b8);
-      color: white;
-      padding: 25px 0;
-      text-align: center;
-      font-size: 24px;
-      font-weight: 600;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #0056b3;
+            padding: 10px 0;
+        }
 
-    nav {
-      display: flex;
-      justify-content: center;
-      background-color: #138496;
-      padding: 12px 0;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      padding: 10px 18px;
-      border-radius: 25px;
-      transition: all 0.3s ease;
-      background-color: #17a2b8;
-    }
+        nav a:hover {
+            background-color: #007bff;
+        }
 
-    nav a:hover {
-      background-color: #138496;
-    }
+        section {
+            padding: 20px;
+            display: none; /* Hidden by default */
+        }
 
-    section {
-      display: none;
-      max-width: 700px;
-      margin: 30px auto;
-      padding: 30px;
-      background-color: #ffffff;
-      border-radius: 16px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-      transition: all 0.3s ease;
-    }
+        section.active {
+            display: block; /* Active section */
+        }
 
-    section.active {
-      display: block;
-      animation: fadeSlideIn 0.3s ease-in;
-    }
+        h2 {
+            color: #007bff;
+        }
 
-    @keyframes fadeSlideIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 0 auto 20px auto;
+        }
 
-    h2 {
-      color: #17a2b8;
-      text-align: center;
-      margin-bottom: 25px;
-    }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
 
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
 
-    label {
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
+        input::placeholder {
+            color: #6c757d;
+        }
 
-    input, select, button {
-      padding: 12px;
-      border: 1px solid #ced4da;
-      border-radius: 10px;
-      font-size: 15px;
-    }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
 
-    input::placeholder {
-      color: #6c757d;
-    }
+        button:hover {
+            background-color: #0056b3;
+        }
 
-    button {
-      background-color: #20c997;
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      border: none;
-    }
+        .dashboard {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-    button:hover {
-      background-color: #17a2b8;
-    }
+        .dashboard ul {
+            list-style: none;
+            padding: 0;
+        }
 
-    .dashboard {
-      padding: 20px;
-      background-color: #f8f9fa;
-      border-radius: 12px;
-    }
-
-    .dashboard h3 {
-      margin-bottom: 12px;
-      color: #343a40;
-    }
-
-    .dashboard ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .dashboard li {
-      padding: 10px 0;
-      border-bottom: 1px solid #dee2e6;
-    }
-  </style>
+        .dashboard li {
+            padding: 10px;
+            border-bottom: 1px solid #e9ecef;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    BloodBridge: Lifesaving Resources
-  </header>
+    <header>
+        <h1>BloodBridge: Lifesaving Resources</h1>
+    </header>
+    <nav>
+        <a href="#" onclick="showSection('emergency')">Emergency Request</a>
+        <a href="#" onclick="showSection('donor')">Donor Management</a>
+        <a href="#" onclick="showSection('inventory')">Blood Bank Inventory</a>
+    </nav>
 
-  <nav>
-    <a href="#" onclick="showSection('emergency')">Emergency Request</a>
-    <a href="#" onclick="showSection('donor')">Donor Management</a>
-    <a href="#" onclick="showSection('inventory')">Blood Bank Inventory</a>
-  </nav>
+    <!-- Emergency Blood Request -->
+    <section id="emergency" class="active">
+        <h2>Emergency Blood Request</h2>
+        <form id="emergencyForm">
+            <label for="bloodType">Blood Type:</label>
+            <input 
+                type="text" 
+                id="bloodType" 
+                placeholder="Enter the blood group (e.g., A+, O-)" 
+                pattern="^(A|B|AB|O)[+-]$" 
+                title="Enter a valid blood group (A+, O-, etc.)" 
+                required>
 
-  <!-- Emergency Blood Request -->
-  <section id="emergency" class="active">
-    <h2>Emergency Blood Request</h2>
-    <form id="emergencyForm">
-      <label for="bloodType">Blood Type:</label>
-      <input
-        type="text"
-        id="bloodType"
-        placeholder="Enter the blood group (e.g., A+, O-)"
-        pattern="^(A|B|AB|O)[+-]$"
-        title="Enter a valid blood group (A+, O-, etc.)"
-        required>
+            <label for="quantity">Quantity (units):</label>
+            <input 
+                type="number" 
+                id="quantity" 
+                placeholder="Enter quantity in units (e.g., 2)" 
+                min="1" 
+                required>
 
-      <label for="quantity">Quantity (units):</label>
-      <input
-        type="number"
-        id="quantity"
-        placeholder="Enter quantity in units (e.g., 2)"
-        min="1"
-        required>
+            <label for="location">Location:</label>
+            <input 
+                type="text" 
+                id="location" 
+                placeholder="Enter location (e.g., City Hospital)" 
+                required>
 
-      <label for="location">Location:</label>
-      <input
-        type="text"
-        id="location"
-        placeholder="Enter location (e.g., City Hospital)"
-        required>
+            <button type="button" onclick="submitEmergencyRequest()">Submit Request</button>
+        </form>
+    </section>
 
-      <button type="button" onclick="submitEmergencyRequest()">Submit Request</button>
-    </form>
-  </section>
+    <!-- Donor Management -->
+    <section id="donor">
+        <h2>Donor Management</h2>
+        <div class="dashboard">
+            <h3>Upcoming Blood Drives</h3>
+            <ul>
+                <li>Blood Drive at City Hall - 04 June 2025</li>
+                <li>Community Center Drive - 10 June 2025</li>
+            </ul>
+            <button type="button" onclick="scheduleDonation()">Schedule Donation</button>
+        </div>
+    </section>
 
-  <!-- Donor Management -->
-  <section id="donor">
-    <h2>Donor Management</h2>
-    <div class="dashboard">
-      <h3>Upcoming Blood Drives</h3>
-      <ul>
-        <li>Blood Drive at City Hall - 04 June 2025</li>
-        <li>Community Center Drive - 10 June 2025</li>
-      </ul>
-      <button type="button" onclick="scheduleDonation()">Schedule Donation</button>
-    </div>
-  </section>
+    <!-- Blood Bank Inventory -->
+    <section id="inventory">
+        <h2>Blood Bank Inventory</h2>
+        <form id="inventoryForm">
+            <label for="bloodTypeInventory">Blood Type:</label>
+            <input type="text" id="bloodTypeInventory" required>
 
-  <!-- Blood Bank Inventory -->
-  <section id="inventory">
-    <h2>Blood Bank Inventory</h2>
-    <form id="inventoryForm">
-      <label for="bloodTypeInventory">Blood Type:</label>
-      <input type="text" id="bloodTypeInventory" required>
+            <label for="stockLevel">Stock Level (units):</label>
+            <input type="number" id="stockLevel" required>
 
-      <label for="stockLevel">Stock Level (units):</label>
-      <input type="number" id="stockLevel" required>
+            <button type="button" onclick="updateInventory()">Update Inventory</button>
+        </form>
+    </section>
 
-      <button type="button" onclick="updateInventory()">Update Inventory</button>
-    </form>
-  </section>
+    <script>
+        // Function to show specific section
+        function showSection(sectionId) {
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
 
-  <script>
-    function showSection(sectionId) {
-      document.querySelectorAll('section').forEach(section => {
-        section.classList.remove('active');
-      });
-      document.getElementById(sectionId).classList.add('active');
-    }
+        // Emergency request submission
+        async function submitEmergencyRequest() {
+            const bloodType = document.getElementById('bloodType').value;
+            const quantity = document.getElementById('quantity').value;
+            const location = document.getElementById('location').value;
 
-    async function submitEmergencyRequest() {
-      const bloodType = document.getElementById('bloodType').value;
-      const quantity = document.getElementById('quantity').value;
-      const location = document.getElementById('location').value;
+            alert(`Emergency request for ${bloodType} (${quantity} units) at ${location} submitted successfully.`);
+            // Add API logic here
+        }
 
-      alert(`Emergency request for ${bloodType} (${quantity} units) at ${location} submitted successfully.`);
-    }
+        // Schedule donation
+        function scheduleDonation() {
+            alert('Donation scheduled successfully.');
+            // Add scheduling logic here
+        }
 
-    function scheduleDonation() {
-      alert('Donation scheduled successfully.');
-    }
-
-    async function updateInventory() {
-      alert('Inventory updated successfully.');
-    }
-  </script>
+        // Inventory update
+        async function updateInventory() {
+            alert('Inventory updated successfully.');
+            // Add API logic here
+        }
+    </script>
 </body>
 </html>
- 
